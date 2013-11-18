@@ -1,0 +1,25 @@
+.navbar.navbar-default.navbar-static-top.navbar-inverse{:role => "navigation"}
+  
+  .container
+    %ul.nav.navbar-nav
+      %li
+        = link_to "ApartaMesa.com backend", root_path, :class => 'brand'
+
+    %ul.nav.navbar-nav.navbar-right
+      - if restaurant_signed_in?
+        %li
+          = link_to 'Salir', destroy_restaurant_session_path, :method=>'delete'
+      - else
+        %li
+          = link_to 'Iniciar sesión', new_restaurant_session_path
+      - if restaurant_signed_in?
+        %li
+          = link_to 'Edit account', edit_restaurant_registration_path
+        - if current_restaurant.has_role? :main
+          %li
+            = link_to 'Admin', restaurant_path
+      - else
+        %li
+          = link_to 'Regístrate', new_restaurant_registration_path
+      
+
