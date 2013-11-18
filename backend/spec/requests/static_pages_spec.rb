@@ -3,9 +3,9 @@ require 'spec_helper'
 describe "Static pages" do
 
   describe "Home page" do
-    it "should have the content 'aparta mesa'" do
+    it "should have the content 'Panel de control'" do
       visit root_url
-      expect(page).to have_content('aparta mesa')
+      expect(page).to have_content('Panel de control')
     end
   end
 
