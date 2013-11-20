@@ -1,4 +1,7 @@
 Apartamesa::Application.routes.draw do
+  get 'restaurantes', to: "restaurants#home"
+  get 'panel', to: 'restaurants#panel'
+
   root :to => "home#index"
 
   devise_for  :users, 
