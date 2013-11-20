@@ -11,22 +11,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131118170207) do
+ActiveRecord::Schema.define(version: 20131120021516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "restaurant_roles", force: true do |t|
+  create_table "facebook_user_infos", force: true do |t|
+    t.integer  "user_id",          null: false
+    t.integer  "facebook_user_id", null: false
+    t.string   "username",         null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "gender"
     t.string   "name"
-    t.integer  "resource_id"
-    t.string   "resource_type"
+    t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "restaurant_roles", ["name"], name: "index_restaurant_roles_on_name", using: :btree
+  add_index "facebook_user_infos", ["facebook_user_id"], name: "index_facebook_user_infos_on_facebook_user_id", unique: true, using: :btree
+  add_index "facebook_user_infos", ["user_id"], name: "index_facebook_user_infos_on_user_id", unique: true, using: :btree
 
-  create_table "restaurant_users", force: true do |t|
+  create_table "oauth2_user_infos", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.string   "uid",        null: false
+    t.string   "provider",   null: false
+    t.string   "email"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "oauth2_user_infos", ["uid", "provider"], name: "index_oauth2_user_infos_on_uid_and_provider", unique: true, using: :btree
+
+  create_table "restaurants", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -41,15 +60,15 @@ ActiveRecord::Schema.define(version: 20131118170207) do
     t.datetime "updated_at"
   end
 
-  add_index "restaurant_users", ["email"], name: "index_restaurant_users_on_email", unique: true, using: :btree
-  add_index "restaurant_users", ["reset_password_token"], name: "index_restaurant_users_on_reset_password_token", unique: true, using: :btree
+  add_index "restaurants", ["email"], name: "index_restaurants_on_email", unique: true, using: :btree
+  add_index "restaurants", ["reset_password_token"], name: "index_restaurants_on_reset_password_token", unique: true, using: :btree
 
-  create_table "restaurant_users_roles", id: false, force: true do |t|
-    t.integer "restaurant_users_id"
+  create_table "restaurants_roles", id: false, force: true do |t|
+    t.integer "restaurant_id"
     t.integer "role_id"
   end
 
-  add_index "restaurant_users_roles", ["restaurant_users_id", "role_id"], name: "index_restaurant_users_roles_on_restaurant_users_id_and_role_id", using: :btree
+  add_index "restaurants_roles", ["restaurant_id", "role_id"], name: "index_restaurants_roles_on_restaurant_id_and_role_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"

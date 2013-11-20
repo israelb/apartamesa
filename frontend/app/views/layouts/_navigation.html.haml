@@ -4,6 +4,11 @@
     %ul.nav.navbar-nav
       %li
         = link_to "ApartaMesa.com", root_path, :class => 'brand'
+      %li
+        = link_to "restaurantes", new_restaurant_session_path
+      - if restaurant_signed_in?
+        %li
+          = link_to 'Sign out', destroy_user_session_path, :method => :delete
 
     %ul.nav.navbar-nav.navbar-right
       - if user_signed_in?
@@ -21,5 +26,9 @@
       - else
         %li
           = link_to 'Regístrate', new_user_registration_path
+      %li 
+        = link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) 
+      %li 
+        = link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) 
       
 
