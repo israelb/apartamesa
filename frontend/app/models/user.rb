@@ -1,24 +1,24 @@
 class User < ActiveRecord::Base
-  has_one :oauth2_user_info, dependent: :destroy
-  has_one :facebook_user_info, dependent: :destroy
+  #has_one :oauth2_user_info, dependent: :destroy
+  #has_one :facebook_user_info, dependent: :destroy
   
   after_create :assign_default_role
 
   # Virtual attribute for authenticating by either username or email
   # This is in addition to a real persisted field like 'username'
-  attr_accessor :username
+  attr_accessor :login
 
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, 
          :omniauthable, :recoverable, :rememberable, 
-         :trackable, :validatable, :authentication_keys => [:username]
+         :trackable, :validatable, 
+         :authentication_keys => [:username] # log in whith username
 
   validates :username, :presence => true, :uniqueness => {:case_sensitive => false}, :length => { :minimum => 3 }
             #:format => { :with => /\A[A-Z0-9a-z\w\b\ \-\_\'\!&@#\.]+\z/i,
             #:message => "may contain only alphanumeric characters and common special characters." }
-
 
   def assign_default_role
     add_role(:admin)
@@ -52,19 +52,20 @@ class User < ActiveRecord::Base
     end
   end
 
+=begin
   def self.find_first_by_auth_conditions(warden_conditions)
 
     conditions = warden_conditions.dup
-    if username = conditions.delete(:username)
+    if login = conditions.delete(:username)
       # when allowing distinct User records with, e.g., "username" and "UserName"...
-      #where(conditions).where(["username = :value OR lower(email) = lower(:value)", { :value => login }]).first
+      where(conditions).where(["username = :value OR lower(email) = lower(:value)", { :value => login }]).first
       
-      where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => username.downcase }]).first
+      #where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => username.downcase }]).first
     else
       where(conditions).first
     end
   end
-
+=end
 
   def self.new_with_session(params, session)
     if session["devise.user_attributes"]
