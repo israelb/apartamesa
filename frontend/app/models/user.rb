@@ -1,14 +1,24 @@
 class User < ActiveRecord::Base
   has_one :oauth2_user_info, dependent: :destroy
   has_one :facebook_user_info, dependent: :destroy
+  
+  after_create :assign_default_role
+
+  # Virtual attribute for authenticating by either username or email
+  # This is in addition to a real persisted field like 'username'
+  attr_accessor :username
 
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :omniauthable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, 
+         :omniauthable, :recoverable, :rememberable, 
+         :trackable, :validatable, :authentication_keys => [:username]
 
-  after_create :assign_default_role
+  validates :username, :presence => true, :uniqueness => {:case_sensitive => false}, :length => { :minimum => 3 }
+            #:format => { :with => /\A[A-Z0-9a-z\w\b\ \-\_\'\!&@#\.]+\z/i,
+            #:message => "may contain only alphanumeric characters and common special characters." }
+
 
   def assign_default_role
     add_role(:admin)
@@ -22,20 +32,17 @@ class User < ActiveRecord::Base
       user.username = auth_token.info.nickname
     end
   end
-
+=end
 
   def self.from_omniauth_facebook(auth_token)
-    raise
     data = auth_token[:info]
     raw_info = auth_token["extra"]["raw_info"]
 
-    where(auth_token.slice(:provider, :uid)).first_or_create do |user|
-      Oauth2UserInfo.email = data[:email]
-      name = data["name"]
-      fb_uid = auth_token["uid"]
-      provider = auth_token["provider"]
-      username = raw_info["username"]
-    end
+    email = data[:email]
+    name = data["name"]
+    fb_uid = auth_token["uid"]
+    provider = auth_token["provider"]
+    username = raw_info["username"]
 
     where(auth_token.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth_token.provider
@@ -44,7 +51,21 @@ class User < ActiveRecord::Base
       user.email = email
     end
   end
-=end
+
+  def self.find_first_by_auth_conditions(warden_conditions)
+
+    conditions = warden_conditions.dup
+    if username = conditions.delete(:username)
+      # when allowing distinct User records with, e.g., "username" and "UserName"...
+      #where(conditions).where(["username = :value OR lower(email) = lower(:value)", { :value => login }]).first
+      
+      where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => username.downcase }]).first
+    else
+      where(conditions).first
+    end
+  end
+
+
   def self.new_with_session(params, session)
     if session["devise.user_attributes"]
       new session["devise.user_attributes"]  do |user|
@@ -56,5 +77,7 @@ class User < ActiveRecord::Base
     end
   end
 
-
+  def password_required?
+    super && provider.blank?
+  end
 end
