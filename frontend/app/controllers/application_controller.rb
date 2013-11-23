@@ -20,19 +20,13 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def devise_parameter_sanitizer
-    if resource_class == User
-      User::ParameterSanitizer.new(User, :user, params)
-    else
-      super # Use the default one
+    # Load Strong Parameters for devise
+    def devise_parameter_sanitizer
+      if resource_class == User
+        User::ParameterSanitizer.new(User, :user, params)
+      else
+        super # Use the default one
+      end
     end
-  end
-
-=begin
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me) }
-    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:username, :email, :password, :remember_me) }
-  end
-=end
 
 end

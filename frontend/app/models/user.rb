@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
-  #has_one :oauth2_user_info, dependent: :destroy
-  #has_one :facebook_user_info, dependent: :destroy
+  rolify
   
   after_create :assign_default_role
   #after_create :send_welcome_mail
@@ -10,7 +9,6 @@ class User < ActiveRecord::Base
   # This is in addition to a real persisted field like 'username'
   attr_accessor :login
 
-  rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, 

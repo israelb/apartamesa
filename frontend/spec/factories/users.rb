@@ -2,5 +2,8 @@
 
 FactoryGirl.define do
   factory :user do
+    username  'John Lennon'
+    password  'TheBeatles'
+    password_confirmation 'TheBeatles'
   end
 end
