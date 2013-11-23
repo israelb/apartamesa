@@ -1,5 +1,4 @@
 # Additional translations at http://github.com/plataformatec/devise/wiki/I18n
-
 es:
   errors:
     messages:
@@ -9,18 +8,34 @@ es:
       not_locked: "no está bloqueada"
       not_saved:
         one: "1 error evitó que este %{resource} fuera guardado:"
-        other: "%{count} errores evitaron que este %{resource} fuera guardado:"
-
+        other: "%{count} errores evitaron que este %{resource} fuera guardado:"  
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            current_password:
+              blank: "Introduzca su password para hacer el cambio"
+              invalid: "El password es invalido"
+            password:
+              too_short: "El password debe de ser mayor a 8 caracteres"
+            password_confirmation:
+              confirmation: "El password no concuerda"
+            username:
+              blank: "Debe de poner un nombre de usuario"
+              taken: "Este nombre de usuario ya esta en uso, intente con otro"
+ 
   devise:
     failure:
       already_authenticated: 'Ya está dentro del sistema.'
       unauthenticated: 'Necesita ingresar o registrarse para continuar.'
       unconfirmed: 'Debe confirmar su cuenta para continuar.'
-      locked: 'Su eucnta está bloqueada.'
+      locked: 'Su cuenta está bloqueada.'
       invalid: 'Login o contraseña invalidos.'
       invalid_token: 'Ficha de autenticación invalida.'
       timeout: 'Su sesión ha expirado, por favor ingrese nuevamente para continuar.'
       inactive: 'Su cuenta aún no ha sido activada.'
+      not_found_in_database: "Login o contraseña invalidos."
     sessions:
       signed_in: 'Ingreso exitoso.'
       signed_out: 'Usted ha salido del sistema.'
@@ -56,3 +71,5 @@ es:
         subject: 'Instrucciones de reinicio de contraseña'
       unlock_instructions:
         subject: 'Instrucciones de desbloqueo'
+
+ 
