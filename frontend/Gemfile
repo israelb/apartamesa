@@ -17,7 +17,7 @@ gem 'figaro'
 gem 'haml-rails'
 gem 'pg'
 gem 'puma'
-gem 'rolify'
+gem 'rolify', '~> 3.3.0.rc4'
 gem 'sendgrid'
 gem 'simple_form'
 
