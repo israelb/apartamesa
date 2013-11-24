@@ -19,11 +19,31 @@ es:
               invalid: "El password es invalido"
             password:
               too_short: "El password debe de ser mayor a 8 caracteres"
+              blank: "Introduzca un password"
             password_confirmation:
               confirmation: "El password no concuerda"
             username:
               blank: "Debe de poner un nombre de usuario"
               taken: "Este nombre de usuario ya esta en uso, intente con otro"
+            email:
+              blank: "Introduzca un email"
+              invalid: "El email no es valido"
+        restaurant:
+          attributes:
+            current_password:
+              blank: "Introduzca su password para hacer el cambio"
+              invalid: "El password es invalido"
+            password:
+              too_short: "El password debe de ser mayor a 8 caracteres"
+              blank: "Introduzca un password"
+            password_confirmation:
+              confirmation: "El password no concuerda"
+            username:
+              blank: "Debe de poner un nombre de usuario"
+              taken: "Este nombre de usuario ya esta en uso, intente con otro"
+            email:
+              blank: "Introduzca un email"
+              invalid: "El email no es valido"
  
   devise:
     failure:
