@@ -13,14 +13,14 @@ describe HomeController do
     # note the fact that I removed the "validate_session" parameter if this was a scaffold-generated controller
     subject.current_user.should_not be_nil
   end
-=begin
+
   it "should get panel control" do
     # Note, rails 3.x scaffolding may add lines like get :index, {}, valid_session
     # the valid_session overrides the devise login. Remove the valid_session from your specs
-    get 'panel'
+    get 'index'
     response.should be_success
   end
-=end
+
   it "should be an admin" do
     subject.current_user.should be_has_role :admin
   end
