@@ -1,0 +1,559 @@
+!!!
+/[if IE 8] <html class="no-js lt-ie9">
+/ [if gt IE 8]><!
+%html.no-js
+  / <![endif]
+  %head
+    %meta{charset: "utf-8"}/
+    %title= content_for?(:title) ? yield(:title) : 'Restaurantes'
+    /
+      \=================================
+      Meta tags
+      \=================================
+    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Apartamesa'}"}
+    %meta{content: "yes", name: "apple-mobile-web-app-capable"}
+    %meta{content: "minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=no", name: "viewport"}
+    /
+      \=================================
+      Style Sheets
+      \=================================
+    %link{href: "http://fonts.googleapis.com/css?family=Lato:400,300,700,400italic,900", rel: "stylesheet", type: "text/css"}/
+    %link{href: "assets/css/bootstrap.min.css", rel: "stylesheet", type: "text/css"}/
+    %link{href: "assets/css/font-awesome.min.css", rel: "stylesheet", type: "text/css"}/
+    %link{href: "assets/css/flexslider.css", rel: "stylesheet", type: "text/css"}/
+    %link{href: "assets/css/animate-custom.css", rel: "stylesheet", type: "text/css"}/
+    %link{href: "assets/css/prettyPhoto.css", rel: "stylesheet", type: "text/css"}/
+    %link{href: "assets/css/main.css", rel: "stylesheet"}/
+    / style switcher
+    %link{href: "styleswitcher/styleswitcher.css", rel: "stylesheet", type: "text/css"}/
+    / style switcher
+    %link{href: "styleswitcher/styleswitcher.css", rel: "stylesheet", type: "text/css"}/
+    %script{src: "js/modernizr-2.6.2-respond-1.1.0.min.html"}
+  %body.is-wide
+    #layout.wide-layout
+      /
+        \=================================
+        Markup
+        \=================================
+      /
+        \=========================================
+        Navigation
+        \========================================
+      %header.navbar-fixed-top
+        .container
+          .header-inner.clearfix
+            / HEADER BRANDING : begin
+            .branding
+              %a{href: "index.html"} Ortax
+            / HEADER BRANDING : end
+            / NAV TOGGLE : begin
+            %button.nav-toggle
+              %i.icon-reorder
+            / NAV TOGGLE : end
+            / MAIN NAV : begin
+            %nav.main
+              %ul
+                %li
+                  %a{href: "index.html"}
+                    %span Home
+                %li
+                  %a{href: "#"}
+                    %span Showcase
+                  %ul.submenu
+                    %li
+                      %a{href: "showcase.html"}
+                        %span Circle portfolio
+                    %li
+                      %a{href: "showcase-Block.html"}
+                        %span Block Portfolio
+                    %li
+                      %a{href: "showcase-detail.html"}
+                        %span Portfolio Detail
+                %li
+                  %a{href: "#"}
+                    %span Pages
+                  %ul.submenu
+                    %li
+                      %a{href: "about.html"}
+                        %span About
+                    %li
+                      %a{href: "team.html"}
+                        %span Team
+                    %li
+                      %a{href: "FAQ.html"}
+                        %span FAQ
+                    %li
+                      %a{href: "elements.html"}
+                        %span Elements
+                    %li
+                      %a{href: "pricing.html"}
+                        %span Pricing Table
+                    %li
+                      %a{href: "soon.html"}
+                        %span Coming Soon
+                    %li
+                      %a{href: "blank_content.html"}
+                        %span Full Width
+                    %li
+                      %a{href: "404.html"}
+                        %span 404 error
+                %li
+                  %a{href: "blog.html"}
+                    %span Blog
+                  %ul.submenu
+                    %li
+                      %a{href: "blog.html"}
+                        %span Masonry Blog
+                    %li
+                      %a{href: "blog_listing.html"}
+                        %span Standard Blog
+                    %li
+                      %a{href: "blog-leftmenu.html"}
+                        %span Blog left menu
+                    %li
+                      %a{href: "blog-rightmenu.html"}
+                        %span Blog Right menu
+                    %li
+                      %a{href: "blog-inner.html"}
+                        %span Blog Detail
+                %li
+                  %a{href: "contact.html"}
+                    %span Contact
+              %select
+                %option{value: "index.html"} Home
+                %option{value: "showcase.html"} Showcase
+                %option{value: "showcase-Block.html"} - Showcase-Block
+                %option{value: "showcase-detail.html"} - Portfolio Detail
+                %option{value: "about.html"} About Us
+                %option{value: "team.html"} Team
+                %option{value: "FAQ.html"} FAQ
+                %option{value: "elements.html"} Elements
+                %option{value: "pricing.html"} Pricing Table
+                %option{value: "soon.html"} Coming Soon
+                %option{value: "blank_content.html"} Full Width
+                %option{value: "404.html"} 404 Error
+                %option{value: "blog.html"} Blog
+                %option{value: "blog.html"} - Masonry Blog
+                %option{value: "blog_listing.html"} - Standard Blog
+                %option{value: "blog-leftmenu.html"} - Blog left menu
+                %option{value: "blog-rightmenu.html"} - Blog Right menur
+                %option{value: "blog-inner.html"} - Blog Detail
+                %option{value: "contact.html"} Contact
+            / MAIN NAV : end
+      / HEADER : end
+      /
+        \=================================
+        Slider
+        \=================================
+      %section#home
+        #home-slider.flexslider
+          %ul.slides
+            %li
+              %img{alt: "", src: "assets/img/slider/slide-01.jpg"}/
+              .flex-caption
+                %h1.animated Great Branding is a Unforgetable experience
+                %p.animated There's No Limit to What CrowdFlower Can Do - Just Ask Our Customers
+                %ul.flex-buttons
+                  %li
+                    %a{href: "#"} Learn More
+                  %li
+                    %a{href: "#"} Purchase Now
+            %li
+              %img{alt: "", src: "assets/img/slider/slide-02.png"}/
+              .flex-caption
+                %h1.animated Great Branding is a Unforgetable experience
+                %p.animated There's No Limit to What CrowdFlower Can Do - Just Ask Our Customers
+                %ul.flex-buttons
+                  %li
+                    %a{href: "#"} Learn More
+                  %li
+                    %a{href: "#"} Purchase Now
+            %li
+              %img{alt: "", src: "assets/img/slider/slide-03.png"}/
+              .flex-caption
+                %h1.animated Great Branding is a Unforgetable experience
+                %p.animated There's No Limit to What CrowdFlower Can Do - Just Ask Our Customers
+                %ul.flex-buttons
+                  %li
+                    %a{href: "#"} Learn More
+                  %li
+                    %a{href: "#"} Purchase Now
+      /
+        \=========================================
+        Service
+        \========================================
+      %section#service-wrappper
+        .container
+          .row
+            .col-lg-3.col-md-3.col-sm-3
+              .service
+                .service-visual.service-hover-a.service-hover
+                  %span.service-icon.icon-desktop
+                .head
+                  Flat Design
+                %p That is why our micro-campaigns and solutions are individually crafted for each of our clients.
+            / service column
+            .col-lg-3.col-md-3.col-sm-3
+              .service
+                .service-visual.service-hover-a.service-hover
+                  %span.service-icon.icon-tablet
+                .head
+                  USER EXPERIENCE
+                %p We understand your story is unique. That is why our micro-campaigns and solutions are
+            / service column
+            .col-lg-3.col-md-3.col-sm-3
+              .service
+                .service-visual.service-hover-a.service-hover
+                  %span.service-icon.icon-file-alt
+                .head
+                  Unlimted Colors
+                %p Converting pixel-perfect designs into functional web apps is an art. Coding
+            / service column
+            .col-lg-3.col-md-3.col-sm-3
+              .service
+                .service-visual.service-hover-a.service-hover
+                  %span.service-icon.icon-folder-open-alt
+                .head
+                  Easy to Use
+                %p Brick and mortar selling is only half the battle. We understand the difference and offer user-friendly
+            / service column
+      /
+        \=========================================
+        showcase
+        \========================================
+      %section#showcase-wrapper
+        .container
+          .section-heading-lg
+            Make the right first Impression
+          .showcase-text
+            .row
+              .col-lg-6.col-md-6.col-sm-6
+                %p With Responsive and mobile design all the rage these days it is important to know whether visitors to your site are happy and how to detect whether they are happy across desktops, mobiles and tablets.
+              .col-lg-6.col-md-6.col-sm-6
+                %p Now before I show you how to do a 30 second check on this, firstly a quick pointer. It is imperative not to use this method solely as a reason to change your site around. It’s important to dig deeper into stats to measure satisfaction of users.
+            .row
+              .col-lg-6.col-md-6.col-sm-6
+                .showcase-links-left
+                  %a{href: "#"} Learn More
+              .col-lg-6.col-md-6.col-sm-6
+                .showcase-links-right
+                  %a{href: "#"} Live Preview
+          .clearfix
+          .showcase-images
+            %img.left{alt: "", src: "assets/img/showcase/left.png"}/
+            %img.center{alt: "", src: "assets/img/showcase/1.png"}/
+            %img.right{alt: "", src: "assets/img/showcase/right.png"}/
+        .promotion
+          .container
+            .heading Are you ready to Buy this Theme?
+            %p Lets face it, social media is tricky business in the wrong hands.
+            .link
+              %a{href: "#"} Only on Themeforest
+      /
+        \=================================
+        Blog
+        \=================================
+      %section#blog-wrapper
+        .section-heading
+          %a{href: "#"} Latest From Ortax blog
+        .blog-carousel
+          %article.blog
+            .blog-visual
+              %img{alt: "", src: "assets/img/blog/b1.jpg"}/
+              .blog-hover
+                .hover-icons.animated
+                  %span.icon-search
+            %a.head{href: "#"} Should You Spend Money for a Mention?
+            %ul
+              %li 22 comments
+              %li 09th July 2013
+            %p It is a long established fact that a reader will be distracted by the readable content of a page
+          / \\blog
+          %article.blog
+            .blog-visual
+              %img{alt: "", src: "assets/img/blog/b2.jpg"}/
+              .blog-hover
+                .hover-icons.animated
+                  %span.icon-search
+            %a.head{href: "#"} It is a long established fact that a reader will be
+            %ul
+              %li 22 comments
+              %li 09th July 2013
+            %p I’m never one to turn down a bit of shopping, so I am thrilled
+          / \\blog
+          %article.blog
+            .blog-visual
+              %img{alt: "", src: "assets/img/blog/b3.jpg"}/
+              .blog-hover
+                .hover-icons.animated
+                  %span.icon-search
+            %a.head{href: "#"}
+              We Are Pixel8 Sighting
+              %br/
+              %br/
+            %ul
+              %li 22 comments
+              %li 09th July 2013
+            %p Happy Valentine’s Day. Here’s a little LoveHate print from Blanca Gomez. You’re welcome.
+          / \\blog
+          %article.blog
+            .blog-visual
+              %img{alt: "", src: "assets/img/blog/b4.jpg"}/
+              .blog-hover
+                .hover-icons.animated
+                  %span.icon-search
+            %a.head{href: "#"} Why Writing Guest Articles is a No-Brainer
+            %ul
+              %li 22 comments
+              %li 09th July 2013
+            %p It is a long established fact that a reader will be distracted by the readable content of a page
+          / \\blog
+          %article.blog
+            .blog-visual
+              %img{alt: "", src: "assets/img/blog/b5.jpg"}/
+              .blog-hover
+                .hover-icons.animated
+                  %span.icon-search
+            %a.head{href: "#"} We Are Pixel8 Releases BOLSA
+            %ul
+              %li 22 comments
+              %li 09th July 2013
+            %p Receiving the grant will allow us to keep costs low for our lovely clients, so please cast a vote.
+          / \\blog
+          %article.blog
+            .blog-visual
+              %img{alt: "", src: "assets/img/blog/b6.jpg"}/
+              .blog-hover
+                .hover-icons.animated
+                  %span.icon-search
+            %a.head{href: "#"} There are many variations of passages of Lorem
+            %ul
+              %li 22 comments
+              %li 09th July 2013
+            %p There are many variations of passages of Lorem Ipsum available, but the majority
+          / \\blog
+          %article.blog
+            .blog-visual
+              %img{alt: "", src: "assets/img/blog/b3.jpg"}/
+              .blog-hover
+                .hover-icons.animated
+                  %span.icon-search
+            %a.head{href: "#"} Should You Spend Money for a Mention?
+            %ul
+              %li 22 comments
+              %li 09th July 2013
+            %p It is a long established fact that a reader will be distracted by the readable content of a page
+          / \\blog
+          %article.blog
+            .blog-visual
+              %img{alt: "", src: "assets/img/blog/b2.jpg"}/
+              .blog-hover
+                .hover-icons.animated
+                  %span.icon-search
+            %a.head{href: "#"} Should You Spend Money for a Mention?
+            %ul
+              %li 22 comments
+              %li 09th July 2013
+            %p It is a long established fact that a reader will be distracted by the readable content of a page
+          / \\blog
+        #blog-carousel-pagination.carousel-pagination
+      /
+        \=================================
+        Testimonial
+        \=================================
+      %section#testimonial-wrapper
+        .container
+          .section-heading What Our Client Say
+          .section-subheading We love hearing from our clients
+          .testi-holder
+            #testimonial-carousel.flexslider
+              %ul.slides
+                %li
+                  .row
+                    .col-lg-10.col-md-10.col-sm-10.col-lg-offset-1.col-md-offset-1.col-md-offset-1
+                      %article.testimonial
+                        .quots
+                          %span.icon-quote-left
+                        %p As a creative, ortax excels in translating messaging into relevant visual branding for web, social and print. No matter the client, ortax designs have always told effective stories.
+                        %a{href: "#"} - Fernando Delegado
+                        .quots
+                          %span.icon-quote-right
+                      / \\testimonial
+                %li
+                  .row
+                    .col-lg-10.col-md-10.col-sm-10.col-lg-offset-1.col-md-offset-1.col-md-offset-1
+                      %article.testimonial
+                        .quots
+                          %span.icon-quote-left
+                        %p As a creative, ortax excels in translating messaging into relevant visual branding for web, social and print. No matter the client, ortax designs have always told effective stories.
+                        %a{href: "#"} - Fernando Delegado
+                        .quots
+                          %span.icon-quote-right
+                      / \\testimonial
+                %li
+                  .row
+                    .col-lg-10.col-md-10.col-sm-10.col-lg-offset-1.col-md-offset-1.col-md-offset-1
+                      %article.testimonial
+                        .quots
+                          %span.icon-quote-left
+                        %p As a creative, ortax excels in translating messaging into relevant visual branding for web, social and print. No matter the client, ortax designs have always told effective stories.
+                        %a{href: "#"} - Fernando Delegado
+                        .quots
+                          %span.icon-quote-right
+                      / \\testimonial
+      /
+        \=================================
+        promo-line
+        \=================================
+      %section#promo-line.parallax
+        .container
+          .row
+            .col-lg-10.col-md-10.col-sm-10.col-lg-offset-1.col-md-offset-1.col-md-offset-1
+              %h4 Ortax help companies succeed by connecting with audiences and building handcrafted websites to deliver extraordinary results
+              .link
+                %a{href: "#"} Only on Themeforest
+      /
+        \=================================
+        Latest feeds
+        \=================================
+      %section#feeds-wrapper
+        .container
+          .row
+            .col-lg-4.col-md-4.col-sm-4.makeitfade
+              .head About Ortax
+              .about-short
+                %p Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.
+            .col-lg-4.col-md-4.col-sm-4.makeitfade
+              .head Ortax News
+              .latest-blog
+                .latest-post
+                  .post-date
+                    .date{"data-hover" => "24"} 24
+                    .month July
+                  .detail
+                    %a.title{href: "#"} Praesent dapibus, neque id cursus
+                    %p Faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.
+                .latest-post
+                  .post-date
+                    .date{"data-hover" => "17"} 17
+                    .month May
+                  .detail
+                    %a.title{href: "#"} Praesent dapibus, neque id cursus
+                    %p Faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.
+            .col-lg-4.col-md-4.col-sm-4.makeitfade
+              .head Photostream @ortax
+              .flicker-holder
+                %ul.flicker
+      /
+        \=================================
+        Contact
+        \=================================
+      %section#contact-wrapper
+        .container
+          .section-icon
+            %span.icon-envelope-alt
+          .section-heading Contact Ortax
+          .section-subheading Want to work with us or just want to say hello? Call us at (323) 205-6876.
+          %form
+            .row
+              .col-lg-3.col-md-3.col-sm-3
+                %input{placeholder: "Name", type: "text"}/
+              .col-lg-3.col-md-3.col-sm-3
+                %input{placeholder: "Email", type: "text"}/
+              .col-lg-3.col-md-3.col-sm-3
+                %textarea{placeholder: "Message"}
+              .col-lg-3.col-md-3.col-sm-3
+                %button{type: "submit"}
+                  %span.send-icons
+                    %span.send-text Throw it!
+      /
+        \=================================
+        Map
+        \=================================
+      %section#our-location
+        .container
+          .section-heading On the Map
+        #contact-map
+      /
+        \=================================
+        Footer
+        \=================================
+      %footer#footer-wrapper
+        .container
+          .goto
+            %ul
+              %li
+                %a{href: "showcase.html"} Showcase
+              %li
+                %a{href: "about.html"} About
+              %li
+                %a{href: "team.html"} team
+              %li
+                %a{href: "elements.html"} Elements
+              %li
+                %a{href: "contact.html"} CONTACT
+              %li
+                %a{href: "blog.html"} Blog
+          .copyright
+            © Copyrights 2013, Ortax. All rights reserved. Terms & Services | Privacy
+          .social-links
+            %ul.social
+              %li.facebook
+                %a{href: "#"} Facebook
+              %li.twitter
+                %a{href: "#"} Twitter
+              %li.youtube
+                %a{href: "#"} youtube
+              %li.flicker-social
+                %a{href: "#"} flicker-social
+              %li.viemo
+                %a{href: "#"} viemo
+              %li.linkedin
+                %a{href: "#"} linkedin
+              %li.behance
+                %a{href: "#"} behance
+              %li.s6
+                %a{href: "#"} s6
+    /
+      \=================================
+      Script Source
+      \=================================
+    %script{src: "assets/js/jquery-1.9.js"}
+    %script{src: "assets/js/bootstrap.min.js"}
+    %script{src: "assets/js/jquery.easing-1.3.pack.js"}
+    %script{src: "assets/js/masonry.pkgd.min.js"}
+    %script{src: "assets/js/jquery.flexslider-min.js"}
+    %script{src: "assets/js/jquery.carouFredSel-6.2.1-packed.js"}
+    %script{src: "assets/js/jflickrfeed.min.js"}
+    %script{src: "assets/js/inview.js"}
+    %script{src: "assets/js/google-maps.js"}
+    %script{src: "assets/js/isotope.js"}
+    %script{src: "assets/js/jquery.prettyPhoto.js"}
+    %script{src: "assets/js/main.js"}
+    :javascript
+      var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src='../../www.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s)}(document,'script'));
+    /
+      \========================================
+      Style switcher assets
+      \==========================================
+    %script{src: "styleswitcher/jquery_cookie.js"}
+    %script{src: "styleswitcher/styleswitcher.js"}
+    / STYLESWITCHER HTML
+    #gw-switcher
+      .gw-switcher-body
+        .gw-switcher-row.gw-switcher-header
+          %h1 Style Selector
+        .gw-switcher-tab
+          %a{href: "#"}
+        .gw-switcher-row
+          %a.go-switcher-opt-boxed{href: "#"}
+            %span>
+            Wide / Boxed
+        .gw-switcher-row
+          %a.go-switcher-opt-sticky{href: "#"}
+            %span>
+            Static / Sticky
+    / /STYLESWITCHER HTML

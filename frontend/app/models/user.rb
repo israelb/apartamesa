@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  rolify
+  rolify # Rolify should be the first line
   
   after_create :assign_default_role
   #after_create :send_welcome_mail

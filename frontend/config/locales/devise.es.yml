@@ -44,6 +44,7 @@ es:
             email:
               blank: "Introduzca un email"
               invalid: "El email no es valido"
+              taken:  "Este email ya ha sido registrado"
  
   devise:
     failure:
