@@ -10,7 +10,14 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require turbolinks
 //= require bootstrap
+//= require restaurantes/jquery.easing-1.3.pack
+//= require restaurantes/masonry.pkgd.min
+//= require restaurantes/jquery.flexslider-min
+//= require restaurantes/jquery.carouFredSel-6.2.1-packed
+//= require restaurantes/jflickrfeed.min
+//= require restaurantes/inview
+//= require restaurantes/isotope
+//= require restaurantes/jquery.prettyPhoto
+//= require restaurantes/main
+
