@@ -11,3 +11,15 @@
  *= require_self
  *= require_directory ./restaurantes
  */
+
+.wrapper-form{ margin-top: 160px;}
+
+/*
+.checkbox{ width:100px; float: right; background: yellow;
+  .boolean{width:10px; float: left; background: red;}
+}
+*/
+
+.checkbox_container input {
+  display: inline;
+}
